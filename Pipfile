@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+PyGObject = "*"
+requests = "*"
+psutil = "*"
+Flask = "*"
+netifaces = "*"
+PyChromecast = "*"
+PyQt5 = "*"
+soco = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"

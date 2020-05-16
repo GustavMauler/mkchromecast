@@ -137,7 +137,7 @@ class Casting(object):
                 print(" ")
                 self.cast_to = self.cclist[0][1]
                 if self.cclist[0][2] == "Sonos":
-                    print(colors.success(self.cast_to.player_name))
+                    print(colors.success(self.cast_to.coordinator.player_name))
                 else:
                     print(colors.success(self.cast_to))
                 print(" ")
@@ -315,14 +315,14 @@ class Casting(object):
             )
         except AttributeError:
             for _ in self.sonos_list:
-                if self.cast_to == _.player_name:
+                if self.cast_to == _.coordinator.player_name:
                     self.cast_to = _
             print(
                 colors.options("The IP of ")
-                + colors.success(self.cast_to.player_name)
+                + colors.success(self.cast_to.coordinator.player_name)
                 + colors.options(" is:")
                 + " "
-                + self.cast_to.ip_address
+                + self.cast_to.coordinator.ip_address
             )
 
         if self.host is None:
@@ -412,7 +412,7 @@ class Casting(object):
 
         except AttributeError:
             self.sonos = self.cast_to
-            self.sonos.play_uri(
+            self.sonos.coordinator.play_uri(
                 "x-rincon-mp3radio://" + localip + ":" + self.port + "/stream",
                 title=self.title,
             )
